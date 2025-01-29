@@ -1,9 +1,67 @@
 
-:host {
-    display: grid;
-    grid-template-columns: 1fg 1fg ;
-    height: 100dvh;
-    align-items: center;
-    margin: 0, 5%;
+// :host {
+//     display: grid;
+//     grid-template-columns: 1fg 1fg ;
+//     height: 100dvh;
+//     align-items: center;
+//     margin: 0, 5%;
 
-}   
+// }   
+
+
+// .password-input{
+// position: relative;
+// }
+
+// .password-eye-btn{
+//     background: none;
+//     border: none;
+//     position: absolute;
+//     top: 50%;
+//     right: 12px;
+//     cursor: pointer;
+//     transform: translateY(-50%);
+//     color: #FFFFFF8F;
+
+// }
+
+// .password-eye-btn.active{
+//     color: var(--primary-color);
+// }
+
+
+.password-input {
+    position: relative;
+    width: 150px; /* Забезпечує повну ширину */
+}
+
+.tt-input {
+    padding-right: 40px; /* Залиште місце для іконки */
+    width: 150px; /* Заповнює батьківський контейнер */
+}
+
+.password-eye-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
+    right: -60px; 
+    cursor: pointer;
+    transform: translateY(-50%);
+    color: #FFFFFF8F;
+}
+
+.password-eye-btn.active {
+    color: var(--primary-color);
+}
+
+
+
+
+// .logo-container {
+//         position: fixed;
+//         top: 30%;
+//         right: 700px;
+//         transform: translateY(-50%);
+//       }
+

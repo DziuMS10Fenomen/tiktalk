@@ -1,0 +1,24 @@
+:host{
+    display: block;
+    padding: 20px 12px;
+
+}
+
+.main-menu-list{
+    display: grid;
+    grid-gap: 8px;
+    list-style: none;
+
+}
+
+.menu-item{
+    padding: 16px 12px;
+    cursor: pointer;
+    border: none;
+    background: none;
+
+    &:hover,
+    &:focus-visible{
+        background: #161616;
+    }
+}

@@ -1,8 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
-import { from } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,25 +9,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  authService = inject(AuthService)
-  router: Router= inject(Router)
+  authService = inject(AuthService);
+  router = inject(Router);
 
 
+  public isPasswordVisible:WritableSignal<boolean> = signal(false)
+ 
   form = new FormGroup({
-    username: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required)
+    username: new FormControl<string | null>(null, Validators.required),
+    password: new FormControl<string | null>(null, Validators.required)
   });
 
- 
-
   onSubmit() {
+    this.isPasswordVisible.set(true)
     if (this.form.valid) {
-      console.log(this.form.value); 
-      if (this.form.valid){
-        //@ts-ignore
-      this.authService.login(this.form.value)
-      this.router.navigate([''])
-      }
+      
+      const { username, password } = this.form.value;
+
+      
+      this.authService.login({ username: username!, password: password! }).subscribe({
+        next: () => {
+          
+          this.router.navigate(['']);
+        },
+        error: (err) => {
+          console.error('Login failed:', err);
+          // Обробка помилок входу (додайте власну логіку)
+        }
+      });
+    } else {
+      console.log('Form is invalid');
     }
   }
 }
